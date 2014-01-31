@@ -1,6 +1,6 @@
 {
   "name": "gulp-jst",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Compile underscore templates to a JST file using gulp.",
   "main": "index.js",
   "engines": {
