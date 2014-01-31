@@ -1,0 +1,23 @@
+{
+  "name": "gulp-jst",
+  "version": "0.1.0",
+  "description": "Compile underscore templates to a JST file using gulp.",
+  "main": "index.js",
+  "keywords": [
+    "gulpplugin",
+    "jst",
+    "lodash",
+    "template",
+    "underscore"
+  ],
+  "author": "Ryan Murphy",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "through2": "~0.4.1",
+    "gulp-util": "~2.2.12"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.1"
+  }
+}
