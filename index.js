@@ -1,8 +1,8 @@
 'use strict';
 
 var compile = require('lodash').template;
+var gutil = require('gulp-util');
 var through = require('through2');
-var PluginError = require('gulp-util').PluginError;
 
 var PLUGIN_NAME = 'gulp-jst';
 
@@ -16,8 +16,9 @@ module.exports = function(options) {
     if (file.isBuffer()) {
       try {
         file.contents = new Buffer(compile(file.contents.toString(), null, options).source);
+        file.path = gutil.replaceExtension(file.path, ".js");
       } catch(err) {
-        this.emit('error', new PluginError(PLUGIN_NAME, err));
+        this.emit('error', new gutil.PluginError(PLUGIN_NAME, err));
       }
 
       this.push(file);
