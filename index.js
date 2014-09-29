@@ -6,7 +6,8 @@ var through = require('through2');
 
 var PLUGIN_NAME = 'gulp-jst';
 
-module.exports = function(options) {
+module.exports = function(options, jstOptions) {
+  jstOptions = jstOptions || {};
   var stream = through.obj(function(file, enc, cb) {
     if (file.isNull()) {
       this.push(file);
@@ -15,7 +16,11 @@ module.exports = function(options) {
 
     if (file.isBuffer()) {
       try {
-        file.contents = new Buffer(compile(file.contents.toString(), null, options).source);
+        var source = compile(file.contents.toString(), null, options).source;
+        if (jstOptions.amd) {
+          source = 'define(function() {\r\nreturn ' + source + '\r\n});';
+        }
+        file.contents = new Buffer(source);
         file.path = gutil.replaceExtension(file.path, ".js");
       } catch(err) {
         this.emit('error', new gutil.PluginError(PLUGIN_NAME, err));
