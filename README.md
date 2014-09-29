@@ -31,6 +31,7 @@ gulp.task('default', ['jst']);
 Options
 -------
 
-### jst(options)
+### jst(options, jstOptions)
 
 `gulp-jst` accepts the [same _.template options](http://lodash.com/docs#template) as the lodash library.
+if you want support amd, you can set `jstOptions = {amd: true}`.
